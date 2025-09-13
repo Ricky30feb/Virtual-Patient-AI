@@ -137,3 +137,6 @@ dmypy.json
 
 # Streamlit
 .streamlit/
+
+# Large model files (too big for GitHub)
+*.gguf
