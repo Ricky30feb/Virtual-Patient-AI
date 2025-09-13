@@ -1,0 +1,26 @@
+# Virtual Patient AI Modelfile
+# This file defines how to create the virtual-patient model from GGUF format
+
+FROM ./virtual_patient.Q4_K_M.gguf
+
+# Set the template for medical conversations
+TEMPLATE """Persona: {{ if .System }}{{ .System }}{{ else }}{{ .Prompt }}{{ end }}
+{{ if .Messages }}{{ range .Messages }}{{ .Content }}
+{{ end }}{{ end }}Patient:"""
+
+# System message for virtual patient behavior
+SYSTEM """You are a virtual patient in a medical training simulation. Respond naturally as a patient based on your given persona (personality, age, medical condition). Stay in character throughout the conversation. Provide realistic medical responses, express appropriate emotions, and ask questions a real patient might ask."""
+
+# Model parameters optimized for medical dialogue
+PARAMETER num_ctx 2048
+PARAMETER temperature 0.7
+PARAMETER top_p 0.9
+PARAMETER top_k 40
+PARAMETER repeat_penalty 1.2
+PARAMETER num_predict 256
+
+# Stop sequences to prevent the model from continuing as the doctor
+PARAMETER stop "Doctor:"
+PARAMETER stop "**Doctor**:"
+PARAMETER stop "\nDoctor:"
+PARAMETER stop "\n**Doctor**:"
