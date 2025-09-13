@@ -466,17 +466,26 @@ python3 -c "import requests; print(requests.get('http://localhost:11434/api/vers
 
 **For users receiving a pre-trained GGUF model file:**
 
-1. **Download the model file** `virtual_patient.Q4_K_M.gguf` (2.3GB) to your project directory
-2. **Create the Ollama model:**
+⚠️ **Note**: The model file `virtual_patient.Q4_K_M.gguf` (2.3GB) is not included in this repository due to GitHub file size limits. 
+
+### Option 1: Download Pre-trained Model
+1. **Download the model file** from the releases section or your preferred distribution method
+2. **Place it in the project directory** as `virtual_patient.Q4_K_M.gguf`
+3. **Create the Ollama model:**
    ```bash
    ollama create virtual-patient -f Modelfile
    ```
-3. **Verify the model:**
+
+### Option 2: Train Your Own Model
+Follow the original training instructions in the documentation to create your own fine-tuned model.
+
+### Verification
+4. **Verify the model:**
    ```bash
    ollama list
    # Should show: virtual-patient:latest
    ```
-4. **Run setup test:**
+5. **Run setup test:**
    ```bash
    python test_setup.py
    # Should pass all 5 tests
