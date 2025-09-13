@@ -1,5 +1,5 @@
 """
-Simplified Text-to-Speech Module for Virtual Patient System
+Text-to-Speech Module for Virtual Patient System
 """
 
 import pyttsx3
@@ -34,14 +34,6 @@ class VirtualPatientTTS:
         self.engine.setProperty('volume', 0.9)
     
     def speak_text(self, text: str, persona: Optional[str] = None, blocking: bool = False):
-        """
-        Convert text to speech
-        
-        Args:
-            text: Text to speak
-            persona: Patient persona (ignored in simplified version)
-            blocking: Whether to wait for speech to complete
-        """
         if not text or not text.strip():
             return
             

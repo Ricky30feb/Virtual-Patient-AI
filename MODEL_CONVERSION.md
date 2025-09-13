@@ -1,6 +1,6 @@
 # Model Conversion Guide: Fine-tuned Model → GGUF for Ollama
 
-This guide explains how to convert your fine-tuned virtual patient model to GGUF format for easy distribution via Ollama.
+This guide explains how to convert the fine-tuned virtual patient model to GGUF format for easy distribution via Ollama.
 
 ## 🔄 Conversion Process
 

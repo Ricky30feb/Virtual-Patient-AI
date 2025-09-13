@@ -1,3 +1,13 @@
+# Virtual Patient AI - Git Ignore File
+
+# Large model files (too big for GitHub)
+*.gguf
+*.bin
+*.safetensors
+models/
+model_cache/
+models_cache/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

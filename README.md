@@ -462,7 +462,44 @@ python3 -c "import requests; print(requests.get('http://localhost:11434/api/vers
 ### Improvements
 - Add different voices for different personas.
 
-## 🎁 GGUF Distribution Method
+## 🎁 Model Distribution & Setup
+
+**⚠️ Important**: The trained model file (`virtual_patient.Q4_K_M.gguf` - 2.3GB) is **NOT included** in this GitHub repository due to file size limits.
+
+### 📥 **Method 1: Google Drive Download (Direct Link)**
+```bash
+# Download the model file (2.3GB)
+# Link: https://drive.google.com/file/d/15vYfdAkdZySX0y-9V3dX17Doe4Z1x-az/view?usp=sharing
+
+# Option A: Use Python download script (recommended)
+python download_model.py
+
+# Option B: Use Bash script (Linux/macOS)
+./download_model.sh
+
+# Option C: Manual download
+# 1. Visit the Google Drive link above
+# 2. Click "Download" to save virtual_patient.Q4_K_M.gguf to your project directory
+```
+
+### 🤗 **Method 2: Hugging Face Hub** 
+```bash
+# Install Hugging Face Hub
+pip install huggingface_hub
+
+# Download using our script (update with your HF repo)
+python download_model_hf.py
+```
+
+### 🔧 **Method 3: Build from Training Data**
+```bash
+# If you have the training setup, you can retrain:
+# 1. Prepare your training data in data/train.jsonl
+# 2. Follow the training instructions in MODEL_CONVERSION.md
+# 3. Export to GGUF format
+```
+
+### 🚀 **After Getting the Model**
 
 **For users receiving a pre-trained GGUF model file:**
 
