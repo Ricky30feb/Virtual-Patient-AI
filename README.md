@@ -41,8 +41,7 @@ ollama serve
 ```
 
 ### 2. Install Virtual Patient Model
-
-#### Method 1: Download Pre-built GGUF Model (Recommended - Easy Setup)
+ Download Pre-built GGUF Model (Recommended - Easy Setup)
 
 **Step A: Download the GGUF model file**
 ```bash
@@ -66,16 +65,6 @@ ollama create virtual-patient -f Modelfile
 
 # Verify model was created
 ollama list | grep virtual-patient
-```
-
-#### Method 2: Use Base Model + Modelfile (Fallback Option)
-```bash
-# Pull base model and create virtual patient model
-ollama pull llama3.2:1b
-ollama create virtual-patient-basic -f Modelfile
-
-# Note: This uses the base model, not the fine-tuned version
-# Quality will be lower than the GGUF version
 ```
 
 ### 3. Project Setup
@@ -116,30 +105,6 @@ python test_setup.py
 
 Open your browser to `http://localhost:8501` to start interacting with virtual patients!
 
-## 📦 For Model Creators: Distributing Your Fine-tuned Model
-
-If you've fine-tuned your own virtual patient model and want to share it:
-
-### Step 1: Convert to GGUF Format
-```bash
-# See MODEL_CONVERSION.md for detailed instructions
-# This converts your fine-tuned model to GGUF format for easy distribution
-```
-
-### Step 2: Upload Files
-Upload these files to your distribution platform:
-- `virtual_patient.Q4_K_M.gguf` (~1GB) - Your quantized model
-- `Modelfile` - Ollama configuration (already included)
-
-### Step 3: Update README
-Update the download links in Step 2 of the setup guide with your actual URLs.
-
-### Popular Distribution Options:
-- **GitHub Releases**: Free, easy to use
-- **Hugging Face Hub**: Built for ML models  
-- **Google Drive**: Simple sharing
-- **Direct hosting**: Your own server
-
 ## 📦 Dependencies
 
 The system requires these Python packages (auto-installed via requirements.txt):
@@ -159,12 +124,11 @@ Virtual Patient AI/
 ├── app.py                    # Main Streamlit application (20K)
 ├── tts_system.py            # Simplified TTS system (4K)
 ├── Modelfile                # Ollama model configuration for GGUF model
-├── MODEL_CONVERSION.md      # Guide for converting fine-tuned model to GGUF
 ├── requirements.txt         # Python dependencies
 └── README.md               # Setup documentation
 
-# Additional files you'll create:
-├── virtual_patient.Q4_K_M.gguf  # Your fine-tuned model in GGUF format (~1GB)
+# Additional files you'll download:
+├── virtual_patient.Q4_K_M.gguf  # Your fine-tuned model in GGUF format (~2.3GB)
 ```
 
 ## 🎭 Available Patient Personas
@@ -189,7 +153,7 @@ Each persona includes age groups, diversity factors, and doctor interaction styl
 - **Voice**: Rishi (English-India, Male)
 - **Speech Rate**: 170 WPM
 - **Volume**: 90%
-- **Usage**: All patient personas use the same optimized voice for consistency
+- **Usage**: All patient personas use the same voice currently
 
 ## 🎬 Usage Guide
 
@@ -462,7 +426,7 @@ python3 -c "import requests; print(requests.get('http://localhost:11434/api/vers
 ### Improvements
 - Add different voices for different personas.
 
-## 🎁 Model Distribution & Setup
+## 🎁 Model Setup
 
 **⚠️ Important**: The trained model file (`virtual_patient.Q4_K_M.gguf` - 2.3GB) is **NOT included** in this GitHub repository due to file size limits.
 
@@ -470,38 +434,11 @@ python3 -c "import requests; print(requests.get('http://localhost:11434/api/vers
 ```bash
 # Download the model file (2.3GB)
 # Link: https://drive.google.com/file/d/15vYfdAkdZySX0y-9V3dX17Doe4Z1x-az/view?usp=sharing
-
-# Option A: Use Python download script (recommended)
-python download_model.py
-
-# Option B: Use Bash script (Linux/macOS)
-./download_model.sh
-
-# Option C: Manual download
 # 1. Visit the Google Drive link above
 # 2. Click "Download" to save virtual_patient.Q4_K_M.gguf to your project directory
 ```
 
-### 🤗 **Method 2: Hugging Face Hub** 
-```bash
-# Install Hugging Face Hub
-pip install huggingface_hub
-
-# Download using our script (update with your HF repo)
-python download_model_hf.py
-```
-
-### 🔧 **Method 3: Build from Training Data**
-```bash
-# If you have the training setup, you can retrain:
-# 1. Prepare your training data in data/train.jsonl
-# 2. Follow the training instructions in MODEL_CONVERSION.md
-# 3. Export to GGUF format
-```
-
 ### 🚀 **After Getting the Model**
-
-**For users receiving a pre-trained GGUF model file:**
 
 ⚠️ **Note**: The model file `virtual_patient.Q4_K_M.gguf` (2.3GB) is not included in this repository due to GitHub file size limits. 
 
@@ -513,23 +450,12 @@ python download_model_hf.py
    ollama create virtual-patient -f Modelfile
    ```
 
-### Option 2: Train Your Own Model
-Follow the original training instructions in the documentation to create your own fine-tuned model.
-
 ### Verification
 4. **Verify the model:**
    ```bash
    ollama list
    # Should show: virtual-patient:latest
    ```
-5. **Run setup test:**
-   ```bash
-   python test_setup.py
-   # Should pass all 5 tests
-   ```
-
-✅ **Model Conversion Complete**: The original fine-tuned model has been successfully extracted to GGUF format for easy distribution without requiring the original training process.
-
 ---
 
 🎯 **Ready to Use**: Your Virtual Patient AI system is now fully operational with GGUF distribution support!

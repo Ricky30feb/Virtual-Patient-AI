@@ -13,7 +13,6 @@ class VirtualPatientTTS:
         self._setup_voice()
         
     def _setup_voice(self):
-        """Setup a single voice for all patients"""
         voices = self.engine.getProperty('voices')
         
         preferred_voice_index = None
